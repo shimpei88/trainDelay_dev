@@ -9,20 +9,20 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchWord: '',
             name: '',
             isDelay: true
         }
+        this.searchWord = ''
         this.getData = this.getData.bind(this);
     }
     getData() {
+        console.log(this.searchWord)
         axios.get(ENDPOINT)
         .then((response) => {
             const filterEle = response.data.filter((element, index, array) => {
-                return element.name === this.state.searchWord
+                return element.name === this.searchWord
             })
             
-            if (this.state.searchWord.length == 0) {return}
             if (filterEle.length > 0) {
                 this.setState({
                     isDelay: true,
@@ -34,6 +34,7 @@ class App extends React.Component {
                 })
             }
             this.refs.newText.value = ''
+            this.searchWord = ''
         })
         .catch((error) => {
             console.log(error)
@@ -46,15 +47,19 @@ class App extends React.Component {
         let result = null
         if (this.state.name && this.state.isDelay) {
             result = <p className="result"><span>{this.state.name}</span><br/>現在遅延しています<br/>余裕を持って行動してください</p>
-        } else if (!this.state.isDelay) {
-            result = <p className="result"><span>{this.state.searchWord}</span><br/>事故・遅延情報はありません</p> 
+        } else if (!this.state.isDelay ) {
+            if (this.searchWord === '') {
+                result = null
+            } else {
+                result = <p className="result"><span>{this.searchWord}</span><br/>事故・遅延情報はありません</p> 
+            }
         }
         return (
             <section>
                 <h1><img src="/train_icon.png" alt="train icon"/></h1>
                 <p>遅延情報が知りたい<br/>沿線名を入力してください</p>
                 <div className="info">
-                    <input type="text" placeholder="例：山手線" onChange={(e) => this.setState({searchWord: e.target.value})} ref="newText"/>
+                    <input type="text" placeholder="例：山手線" onChange={(e) => this.searchWord = e.target.value} ref="newText"/>
                     <button onClick={this.getData}>調べる</button>
                 </div>
                 {result}
