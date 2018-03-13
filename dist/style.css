@@ -50,6 +50,7 @@ body {
     background: #009688;
     color: #fff;
     font-size: 62.5%;
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
 }
 #app {
     display: flex;
@@ -75,6 +76,8 @@ body {
 }
 #app section .info {
     overflow: hidden;
+    max-width: 250px;
+    margin: 0 auto;
 }
 #app section .info input {
     display: block;
@@ -98,4 +101,16 @@ body {
     border-radius: 5px;
     font-weight: bold;
     letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+#app section .result span {
+    display: block;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+@media only screen and (max-width : 768px){
+    #app section {
+        padding: 0 20px;
+    }
 }
