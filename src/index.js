@@ -16,7 +16,6 @@ class App extends React.Component {
         this.getData = this.getData.bind(this);
     }
     getData() {
-        console.log(this.searchWord)
         axios.get(ENDPOINT)
         .then((response) => {
             const filterEle = response.data.filter((element, index, array) => {
@@ -56,7 +55,7 @@ class App extends React.Component {
         }
         return (
             <section>
-                <h1><img src="/train_icon.png" alt="train icon"/></h1>
+                <h1><img src="./train_icon.png" alt="train icon"/></h1>
                 <p>遅延情報が知りたい<br/>沿線名を入力してください</p>
                 <div className="info">
                     <input type="text" placeholder="例：山手線" onChange={(e) => this.searchWord = e.target.value} ref="newText"/>
