@@ -60,6 +60,7 @@ body {
 }
 #app section {
     max-width: 500px;
+    min-height: 430px;
 }
 #app section h1 {
     margin-bottom: 30px;
@@ -82,7 +83,7 @@ body {
 #app section .info input {
     display: block;
     border: none;
-    width: 100%;
+    width: 250px;
     height: 50px;
     line-height: 50px;
     margin-bottom: 15px;
@@ -91,7 +92,7 @@ body {
     box-sizing: border-box;
 }
 #app section .info button {
-    width: 100%;
+    width: 250px;
     border: none;
     height: 50px;
     line-height: 50px;
