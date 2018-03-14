@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 
 const template = document.getElementById('app')
-const ENDPOINT = '//rti-giken.jp/fhc/api/train_tetsudo/delay.json'
+const ENDPOINT = 'https://rti-giken.jp/fhc/api/train_tetsudo/delay.json'
 
 class App extends React.Component {
     constructor(props) {
